@@ -36,8 +36,8 @@ type Product = {
   name: string;
   benefit: string;
   price: string;
-  original?: string;
   emoji: string;
+  caption: string;
   tint: string;
 };
 
@@ -45,11 +45,10 @@ const productGroups: { id: string; label: string; tagline: string; products: Pro
   {
     id: "0-3",
     label: "0–3 Months",
-    tagline: "Vision, sound & soothing focus",
+    tagline: "First focus, sound & comfort",
     products: [
-      { name: "High-Contrast Play Kit", benefit: "Builds visual tracking & focus", price: "₹699", original: "₹999", emoji: "⚫️⚪️", tint: "bg-highlight/40" },
-      { name: "Soft Crinkle Cloud", benefit: "Stimulates hearing & touch", price: "₹499", emoji: "☁️", tint: "bg-primary/15" },
-      { name: "Gentle Wrist Rattles", benefit: "Awareness of hands & sound", price: "₹399", original: "₹599", emoji: "🔔", tint: "bg-secondary/25" },
+      { name: "Baby Elephant Squeaky", benefit: "Squeaky sound for early auditory play & grasping", price: "₹349", emoji: "🐘", caption: "[Photo: Baby Elephant Squeaky]", tint: "bg-highlight/40" },
+      { name: "Snuggle Clutch", benefit: "High-contrast clutch with crinkly ears", price: "₹529", emoji: "🐭", caption: "[Photo: Snuggle Clutch]", tint: "bg-primary/15" },
     ],
   },
   {
@@ -57,39 +56,37 @@ const productGroups: { id: string; label: string; tagline: string; products: Pro
     label: "3–6 Months",
     tagline: "Reach, grasp & sensory exploration",
     products: [
-      { name: "Sensory Teether", benefit: "Soothes gums & builds grip", price: "₹499", emoji: "🦷", tint: "bg-secondary/25" },
-      { name: "Atom Ball & Rattle", benefit: "Builds grip & visual tracking", price: "₹899", original: "₹1,199", emoji: "🪀", tint: "bg-primary/15" },
-      { name: "Crinkle Discovery Book", benefit: "Cause & effect, fine motor", price: "₹599", emoji: "📖", tint: "bg-highlight/40" },
+      { name: "Sensory Teether", benefit: "Multi-texture silicone soothes gums & builds grip", price: "₹449", emoji: "🦷", caption: "[Photo: Sensory Teether]", tint: "bg-secondary/25" },
+      { name: "Atom Ball & Rattle", benefit: "Bendable arms for gripping, shaking & motor skills", price: "₹649", emoji: "⚛️", caption: "[Photo: Atom Ball & Rattle]", tint: "bg-primary/15" },
+      { name: "Ellie Grip Teether (Set of 2)", benefit: "Elephant teether with multi-zone dot textures", price: "₹599", emoji: "🐘", caption: "[Photo: Ellie Grip Teether]", tint: "bg-highlight/40" },
+      { name: "Bunny Wristband Rattle", benefit: "Wearable rattle for movement & cause-effect play", price: "₹399", emoji: "🐰", caption: "[Photo: Bunny Wristband Rattle]", tint: "bg-secondary/25" },
     ],
   },
   {
     id: "6-9",
     label: "6–9 Months",
-    tagline: "Sit, explore & cause-and-effect",
+    tagline: "Sit, explore & coordinate",
     products: [
-      { name: "Stacking Sensory Cups", benefit: "Hand-eye coordination", price: "₹799", emoji: "🥣", tint: "bg-highlight/40" },
-      { name: "Wooden Pull-String Drum", benefit: "Rhythm & gross motor play", price: "₹1,099", original: "₹1,499", emoji: "🥁", tint: "bg-secondary/25" },
-      { name: "Object Permanence Box", benefit: "Memory & object permanence", price: "₹999", emoji: "🎁", tint: "bg-primary/15" },
+      { name: "Octopus Soft Toy", benefit: "Easy-grasp arms with crinkle for bilateral coordination", price: "₹749", emoji: "🐙", caption: "[Photo: Octopus Soft Toy]", tint: "bg-highlight/40" },
+      { name: "Lion Crochet Rattle", benefit: "Handcrafted lion with wooden ring & rattle inside", price: "₹699", emoji: "🦁", caption: "[Photo: Lion Crochet Rattle]", tint: "bg-primary/15" },
     ],
   },
   {
     id: "9-12",
     label: "9–12 Months",
-    tagline: "Crawl, pull-up & fine motor",
+    tagline: "Cause-effect & fine motor",
     products: [
-      { name: "Shape Sorter Cube", benefit: "Problem-solving & shape skills", price: "₹1,199", original: "₹1,499", emoji: "🧊", tint: "bg-primary/15" },
-      { name: "Push-Along Roller", benefit: "Encourages crawling & walking", price: "₹1,399", emoji: "🛞", tint: "bg-highlight/40" },
-      { name: "First Wooden Puzzle", benefit: "Pincer grip & spatial sense", price: "₹899", emoji: "🧩", tint: "bg-secondary/25" },
+      { name: "Splash & Read Bath Book Set (2 Books)", benefit: "Waterproof Hippo & Dolphin books for bath-time stories", price: "₹629", emoji: "🐬", caption: "[Photo: Splash & Read Bath Book Set]", tint: "bg-primary/15" },
+      { name: "Dog Rattle Pal — Red", benefit: "Soft puppy with gentle rattle to hold & shake", price: "₹479", emoji: "🐶", caption: "[Photo: Dog Rattle Pal Red]", tint: "bg-secondary/25" },
     ],
   },
   {
     id: "12-15",
     label: "12–15 Months",
-    tagline: "Walk, talk & imagination",
+    tagline: "Walk, hug & imagine",
     products: [
-      { name: "Walker Activity Wagon", benefit: "Confident first steps", price: "₹2,499", original: "₹2,999", emoji: "🚂", tint: "bg-secondary/25" },
-      { name: "Montessori Coin Box", benefit: "Pincer grasp & focus", price: "₹999", emoji: "🪙", tint: "bg-primary/15" },
-      { name: "First Words Picture Set", benefit: "Language & vocabulary", price: "₹699", emoji: "🗣️", tint: "bg-highlight/40" },
+      { name: "Hop & Pull Bunny", benefit: "Stretchable ears & limbs for pulling & tactile play", price: "₹779", emoji: "🐰", caption: "[Photo: Hop & Pull Bunny]", tint: "bg-highlight/40" },
+      { name: "Chompy — Alligator Plush", benefit: "Soft, friendly plush for cuddles & emotional comfort", price: "₹719", emoji: "🐊", caption: "[Photo: Chompy Alligator Plush]", tint: "bg-primary/15" },
     ],
   },
 ];
@@ -308,7 +305,7 @@ function Founder() {
                   <div className="text-center">
                     <div className="text-7xl">👩‍🍼</div>
                     <p className="mt-3 px-6 font-display text-sm font-semibold text-muted-foreground">
-                      [Founder photo placeholder]
+                      [Photo: Utkarsh Sharaff — Founder]
                     </p>
                   </div>
                 </div>
@@ -326,8 +323,11 @@ function Founder() {
 
             <div className="mt-6 space-y-4 text-base leading-relaxed text-foreground/80">
               <p>
-                Hi, I'm <span className="font-semibold text-foreground">[Founder Name]</span> —
-                <span className="text-muted-foreground"> [a short background bio placeholder: child-development background, years of experience, the moment that started Lil Champs].</span>
+                Hi, I'm <span className="font-semibold text-foreground">Utkarsh Sharaff</span> —
+                the parent and founder behind Lil Champs.
+              </p>
+              <p className="text-muted-foreground">
+                [A line about Utkarsh's background and what led to Lil Champs]
               </p>
               <div className="rounded-2xl bg-card p-5 shadow-soft">
                 <p className="font-display text-sm font-bold uppercase tracking-wider text-secondary">
@@ -405,8 +405,13 @@ function Products() {
             <Reveal key={`${group.id}-${p.name}`} delay={i * 90}>
               <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-card shadow-card hover-lift">
                 <div className={`grid aspect-[4/3] place-items-center ${p.tint}`}>
-                  <div className="text-7xl transition-transform duration-500 group-hover:scale-110">
-                    {p.emoji}
+                  <div className="text-center">
+                    <div className="text-7xl transition-transform duration-500 group-hover:scale-110">
+                      {p.emoji}
+                    </div>
+                    <p className="mt-2 px-4 text-xs font-medium text-muted-foreground">
+                      {p.caption}
+                    </p>
                   </div>
                 </div>
                 <div className="flex flex-1 flex-col p-6">
@@ -414,9 +419,6 @@ function Products() {
                   <p className="mt-1 text-sm text-muted-foreground">{p.benefit}</p>
                   <div className="mt-4 flex items-baseline gap-2">
                     <span className="font-display text-xl font-bold text-foreground">{p.price}</span>
-                    {p.original && (
-                      <span className="text-sm text-muted-foreground line-through">{p.original}</span>
-                    )}
                   </div>
                   <a
                     href="https://example.com/buy"
