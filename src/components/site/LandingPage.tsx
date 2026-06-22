@@ -383,9 +383,75 @@ function Founder() {
 
 /* ---------- Products ---------- */
 
+type DbProduct = {
+  id: string;
+  name: string;
+  age_group: string;
+  age_group_label: string;
+  age_group_tagline: string;
+  price: string;
+  image: string | null;
+  emoji: string | null;
+  tint: string | null;
+  benefit: string;
+  caption: string | null;
+  sort_order: number;
+};
+
 function Products() {
-  const [active, setActive] = useState(productGroups[0].id);
-  const group = productGroups.find((g) => g.id === active)!;
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const [placing, setPlacing] = useState<string | null>(null);
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("products" as never)
+        .select("*")
+        .order("sort_order", { ascending: true });
+      if (error) throw error;
+      return (data ?? []) as unknown as DbProduct[];
+    },
+  });
+
+  const groups = useMemo(() => {
+    const map = new Map<string, { id: string; label: string; tagline: string; products: DbProduct[] }>();
+    (data ?? []).forEach((p) => {
+      if (!map.has(p.age_group)) {
+        map.set(p.age_group, {
+          id: p.age_group,
+          label: p.age_group_label,
+          tagline: p.age_group_tagline,
+          products: [],
+        });
+      }
+      map.get(p.age_group)!.products.push(p);
+    });
+    return Array.from(map.values());
+  }, [data]);
+
+  const [active, setActive] = useState<string | null>(null);
+  const activeId = active ?? groups[0]?.id ?? null;
+  const group = groups.find((g) => g.id === activeId);
+
+  async function handlePlaceOrder(p: DbProduct) {
+    if (!user) {
+      toast.info("Please log in to place an order");
+      navigate({ to: "/login" });
+      return;
+    }
+    setPlacing(p.id);
+    const { error } = await supabase
+      .from("orders" as never)
+      .insert({ user_id: user.id, product_name: p.name, price: p.price } as never);
+    setPlacing(null);
+    if (error) {
+      toast.error(error.message || "Could not place order");
+      return;
+    }
+    toast.success(`Order placed for ${p.name}!`);
+  }
 
   return (
     <section id="products" className="py-20 md:py-28">
@@ -403,77 +469,81 @@ function Products() {
           </div>
         </Reveal>
 
-        {/* Age tabs */}
-        <Reveal delay={80}>
-          <div className="mt-10 flex flex-wrap justify-center gap-2 rounded-3xl bg-card p-2 shadow-soft md:mx-auto md:w-fit">
-            {productGroups.map((g) => (
-              <button
-                key={g.id}
-                onClick={() => setActive(g.id)}
-                className={`rounded-2xl px-4 py-2.5 text-sm font-semibold transition ${
-                  active === g.id
-                    ? "bg-primary text-primary-foreground shadow-soft"
-                    : "text-foreground/70 hover:bg-accent"
-                }`}
-              >
-                {g.label}
-              </button>
-            ))}
-          </div>
-        </Reveal>
-
-        <div className="mt-4 text-center text-sm font-medium text-muted-foreground">
-          {group.tagline}
-        </div>
-
-        {/* Cards */}
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {group.products.map((p, i) => (
-            <Reveal key={`${group.id}-${p.name}`} delay={i * 90}>
-              <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-card shadow-card hover-lift">
-                <div className={`relative grid aspect-[4/3] place-items-center overflow-hidden ${p.tint}`}>
-                  {p.image ? (
-                    <img
-                      src={p.image}
-                      alt={p.name}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="text-center">
-                      <div className="text-7xl transition-transform duration-500 group-hover:scale-110">
-                        {p.emoji}
-                      </div>
-                      <p className="mt-2 px-4 text-xs font-medium text-muted-foreground">
-                        {p.caption}
-                      </p>
-                    </div>
-                  )}
-                </div>
-
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="font-display text-lg font-bold">{p.name}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{p.benefit}</p>
-                  <div className="mt-4 flex items-baseline gap-2">
-                    <span className="font-display text-xl font-bold text-foreground">{p.price}</span>
-                  </div>
-                  <a
-                    href="https://example.com/buy"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105"
+        {isLoading || !group ? (
+          <div className="mt-16 text-center text-muted-foreground">Loading toys…</div>
+        ) : (
+          <>
+            <Reveal delay={80}>
+              <div className="mt-10 flex flex-wrap justify-center gap-2 rounded-3xl bg-card p-2 shadow-soft md:mx-auto md:w-fit">
+                {groups.map((g) => (
+                  <button
+                    key={g.id}
+                    onClick={() => setActive(g.id)}
+                    className={`rounded-2xl px-4 py-2.5 text-sm font-semibold transition ${
+                      activeId === g.id
+                        ? "bg-primary text-primary-foreground shadow-soft"
+                        : "text-foreground/70 hover:bg-accent"
+                    }`}
                   >
-                    Buy Now <ArrowRight size={14} />
-                  </a>
-                </div>
-              </article>
+                    {g.label}
+                  </button>
+                ))}
+              </div>
             </Reveal>
-          ))}
-        </div>
+
+            <div className="mt-4 text-center text-sm font-medium text-muted-foreground">
+              {group.tagline}
+            </div>
+
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {group.products.map((p, i) => (
+                <Reveal key={p.id} delay={i * 90}>
+                  <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-card shadow-card hover-lift">
+                    <div className={`relative grid aspect-[4/3] place-items-center overflow-hidden ${p.tint ?? "bg-primary/10"}`}>
+                      {p.image ? (
+                        <img
+                          src={p.image}
+                          alt={p.name}
+                          loading="lazy"
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="text-center">
+                          <div className="text-7xl transition-transform duration-500 group-hover:scale-110">
+                            {p.emoji}
+                          </div>
+                          <p className="mt-2 px-4 text-xs font-medium text-muted-foreground">
+                            {p.caption}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="flex flex-1 flex-col p-6">
+                      <h3 className="font-display text-lg font-bold">{p.name}</h3>
+                      <p className="mt-1 text-sm text-muted-foreground">{p.benefit}</p>
+                      <div className="mt-4 flex items-baseline gap-2">
+                        <span className="font-display text-xl font-bold text-foreground">{p.price}</span>
+                      </div>
+                      <button
+                        onClick={() => handlePlaceOrder(p)}
+                        disabled={placing === p.id}
+                        className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105 disabled:opacity-60"
+                      >
+                        {placing === p.id ? "Placing…" : "Place Order"} <ArrowRight size={14} />
+                      </button>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
 }
+
 
 /* ---------- For Parents ---------- */
 
