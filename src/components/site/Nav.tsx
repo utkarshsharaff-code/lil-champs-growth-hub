@@ -19,6 +19,23 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { user } = useAuth();
+  const { totalCount } = useCart();
+
+  const CartIcon = ({ onClick }: { onClick?: () => void }) => (
+    <Link
+      to="/cart"
+      onClick={onClick}
+      aria-label={`Cart (${totalCount} items)`}
+      className="relative grid h-10 w-10 place-items-center rounded-full bg-card shadow-soft transition hover:brightness-105"
+    >
+      <ShoppingBag size={18} />
+      {totalCount > 0 && (
+        <span className="absolute -right-1 -top-1 grid h-5 min-w-[1.25rem] place-items-center rounded-full bg-primary px-1 text-[10px] font-bold leading-none text-primary-foreground shadow-soft">
+          {totalCount > 99 ? "99+" : totalCount}
+        </span>
+      )}
+    </Link>
+  );
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
