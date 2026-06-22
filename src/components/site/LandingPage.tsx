@@ -682,7 +682,7 @@ function Testimonials() {
 
 /* ---------- Footer ---------- */
 
-function Footer() {
+export function Footer() {
   return (
     <footer id="contact" className="relative">
       <WaveDivider color="var(--color-foreground)" />
