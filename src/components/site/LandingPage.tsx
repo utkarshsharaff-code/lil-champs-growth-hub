@@ -334,7 +334,14 @@ function Founder() {
             </div>
             <p className="mt-4 text-center font-display text-sm font-semibold text-muted-foreground">
               Utkarsh Sharaff — Founder
-            </p>
+            </p> 
+              href="https://www.linkedin.com/in/utkarsh-sharaff/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mx-auto mt-3 flex w-fit items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105"
+            >
+              <Linkedin size={16} /> Connect on LinkedIn
+            </a>
           </Reveal>
 
 
