@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as ShippingReturnsRouteImport } from './routes/shipping-returns'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as MyOrdersRouteImport } from './routes/my-orders'
 import { Route as LoginRouteImport } from './routes/login'
@@ -24,6 +25,11 @@ const TermsRoute = TermsRouteImport.update({
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
   path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShippingReturnsRoute = ShippingReturnsRouteImport.update({
+  id: '/shipping-returns',
+  path: '/shipping-returns',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/my-orders': typeof MyOrdersRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/shipping-returns': typeof ShippingReturnsRoute
   '/signup': typeof SignupRoute
   '/terms': typeof TermsRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/my-orders': typeof MyOrdersRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/shipping-returns': typeof ShippingReturnsRoute
   '/signup': typeof SignupRoute
   '/terms': typeof TermsRoute
 }
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/my-orders': typeof MyOrdersRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/shipping-returns': typeof ShippingReturnsRoute
   '/signup': typeof SignupRoute
   '/terms': typeof TermsRoute
 }
@@ -79,16 +88,25 @@ export interface FileRouteTypes {
     | '/login'
     | '/my-orders'
     | '/privacy-policy'
+    | '/shipping-returns'
     | '/signup'
     | '/terms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/my-orders' | '/privacy-policy' | '/signup' | '/terms'
+  to:
+    | '/'
+    | '/login'
+    | '/my-orders'
+    | '/privacy-policy'
+    | '/shipping-returns'
+    | '/signup'
+    | '/terms'
   id:
     | '__root__'
     | '/'
     | '/login'
     | '/my-orders'
     | '/privacy-policy'
+    | '/shipping-returns'
     | '/signup'
     | '/terms'
   fileRoutesById: FileRoutesById
@@ -98,6 +116,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   MyOrdersRoute: typeof MyOrdersRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  ShippingReturnsRoute: typeof ShippingReturnsRoute
   SignupRoute: typeof SignupRoute
   TermsRoute: typeof TermsRoute
 }
@@ -116,6 +135,13 @@ declare module '@tanstack/react-router' {
       path: '/signup'
       fullPath: '/signup'
       preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shipping-returns': {
+      id: '/shipping-returns'
+      path: '/shipping-returns'
+      fullPath: '/shipping-returns'
+      preLoaderRoute: typeof ShippingReturnsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy-policy': {
@@ -154,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   MyOrdersRoute: MyOrdersRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
+  ShippingReturnsRoute: ShippingReturnsRoute,
   SignupRoute: SignupRoute,
   TermsRoute: TermsRoute,
 }
