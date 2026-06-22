@@ -91,6 +91,7 @@ export function Nav() {
               <span className="max-w-[180px] truncate text-sm font-semibold text-foreground/75">
                 {user.email}
               </span>
+              <CartIcon />
               <button
                 onClick={handleLogout}
                 className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105"
@@ -106,6 +107,7 @@ export function Nav() {
               >
                 Log in
               </Link>
+              <CartIcon />
               <Link
                 to="/signup"
                 className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105"
@@ -116,13 +118,16 @@ export function Nav() {
           )}
         </div>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-full bg-card shadow-soft lg:hidden"
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <CartIcon />
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="grid h-10 w-10 place-items-center rounded-full bg-card shadow-soft"
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </nav>
 
       {open && (
