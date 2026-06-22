@@ -31,9 +31,7 @@ type DbProduct = {
 
 function ProductDetailPage() {
   const { id } = Route.useParams();
-  const { user } = useAuth();
-  const navigate = useNavigate();
-  const [placing, setPlacing] = useState(false);
+  const { addItem } = useCart();
 
   const { data: product, isLoading, isError } = useQuery({
     queryKey: ["product", id],
@@ -48,23 +46,15 @@ function ProductDetailPage() {
     },
   });
 
-  async function handlePlaceOrder() {
+  function handleAddToCart() {
     if (!product) return;
-    if (!user) {
-      toast.info("Please log in to place an order");
-      navigate({ to: "/login" });
-      return;
-    }
-    setPlacing(true);
-    const { error } = await supabase
-      .from("orders" as never)
-      .insert({ user_id: user.id, product_name: product.name, price: product.price } as never);
-    setPlacing(false);
-    if (error) {
-      toast.error(error.message || "Could not place order");
-      return;
-    }
-    toast.success(`Order placed for ${product.name}!`);
+    addItem({
+      productId: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+    });
+    toast.success("Added to cart");
   }
 
   return (
