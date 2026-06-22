@@ -682,7 +682,7 @@ function Testimonials() {
 
 /* ---------- Footer ---------- */
 
-function Footer() {
+export function Footer() {
   return (
     <footer id="contact" className="relative">
       <WaveDivider color="var(--color-foreground)" />
@@ -792,8 +792,13 @@ function Footer() {
         </div>
 
         <div className="border-t border-background/10">
-          <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-5 py-6 text-xs text-background/60 sm:flex-row md:px-8">
+          <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 text-xs text-background/60 sm:flex-row md:px-8">
             <p>© {new Date().getFullYear()} Lil Champs. All rights reserved.</p>
+            <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+              <a href="/privacy-policy" className="transition hover:text-background">Privacy Policy</a>
+              <a href="/terms" className="transition hover:text-background">Terms of Service</a>
+              <a href="/shipping-returns" className="transition hover:text-background">Shipping & Returns</a>
+            </nav>
             <p>Made with care for little champs.</p>
           </div>
         </div>
