@@ -23,20 +23,19 @@ import { Nav } from "./Nav";
 import { Reveal } from "./Reveal";
 import { WaveDivider } from "./WaveDivider";
 
-import imgAtom from "@/assets/products/Atom_ball_Sensory_Grasping.jpg.asset.json";
-import imgElephant from "@/assets/products/Baby_Elephant_Squeaky.jpg.asset.json";
-import imgBunnyWrist from "@/assets/products/Bunny_Wristband_Rattle.jpg.asset.json";
-import imgChompy from "@/assets/products/Chompy-_Alligator_Plush_Toy.jpg.asset.json";
-import imgEllie from "@/assets/products/Ellie_Grip_Teether.jpg.asset.json";
-import imgGiraffe from "@/assets/products/Giraffe_Rattle_Pla_-_Brown.jpg.asset.json";
-import imgHopBunny from "@/assets/products/Hop_and_Pull_Bunny_soft_toy.jpg.asset.json";
-import imgLion from "@/assets/products/Lion_Crochet_Rattle.jpg.asset.json";
-import imgOctopus from "@/assets/products/Octopus_Soft_Toy_with_easy_to_grasp_arms.jpg.asset.json";
-import imgTeether from "@/assets/products/Sensory_Teether.jpg.asset.json";
-import imgSnuggle from "@/assets/products/Snuggle_Clutch.jpg.asset.json";
-import imgSplash from "@/assets/products/Splash_and_read.jpg.asset.json";
-import imgFounder from "@/assets/products/utkarsh-sharaff-founder.png.asset.json";
-
+const imgAtom = { url: "/products/atom-ball.jpg" };
+const imgElephant = { url: "/products/baby-elephant.jpg" };
+const imgBunnyWrist = { url: "/products/bunny-wristband.jpg" };
+const imgChompy = { url: "/products/chompy.jpg" };
+const imgEllie = { url: "/products/ellie-teether.jpg" };
+const imgGiraffe = { url: "/products/giraffe.jpg" };
+const imgHopBunny = { url: "/products/hop-bunny.jpg" };
+const imgLion = { url: "/products/lion.jpg" };
+const imgOctopus = { url: "/products/octopus.jpg" };
+const imgTeether = { url: "/products/sensory-teether.jpg" };
+const imgSnuggle = { url: "/products/snuggle.jpg" };
+const imgSplash = { url: "/products/splash-read.jpg" };
+const imgFounder = { url: "/products/founder.jpg" };
 
 
 
