@@ -530,11 +530,10 @@ function Products() {
                       </div>
                       <div className="mt-5 flex flex-wrap items-center gap-3">
                         <button
-                          onClick={() => handlePlaceOrder(p)}
-                          disabled={placing === p.id}
-                          className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105 disabled:opacity-60"
+                          onClick={() => handleAddToCart(p)}
+                          className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105"
                         >
-                          {placing === p.id ? "Placing…" : "Place Order"} <ArrowRight size={14} />
+                          <ShoppingBag size={14} /> Add to cart
                         </button>
                         <Link
                           to="/product/$id"
