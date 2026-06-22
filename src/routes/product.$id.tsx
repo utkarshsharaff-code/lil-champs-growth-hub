@@ -1,0 +1,160 @@
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
+import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/use-auth";
+import { Nav } from "@/components/site/Nav";
+import { Footer } from "@/components/site/LandingPage";
+
+export const Route = createFileRoute("/product/$id")({
+  component: ProductDetailPage,
+});
+
+type DbProduct = {
+  id: string;
+  name: string;
+  age_group: string;
+  age_group_label: string;
+  age_group_tagline: string;
+  price: string;
+  image: string | null;
+  emoji: string | null;
+  tint: string | null;
+  benefit: string;
+  caption: string | null;
+};
+
+function ProductDetailPage() {
+  const { id } = Route.useParams();
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const [placing, setPlacing] = useState(false);
+
+  const { data: product, isLoading, isError } = useQuery({
+    queryKey: ["product", id],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("products" as never)
+        .select("*")
+        .eq("id", id)
+        .maybeSingle();
+      if (error) throw error;
+      return (data ?? null) as unknown as DbProduct | null;
+    },
+  });
+
+  async function handlePlaceOrder() {
+    if (!product) return;
+    if (!user) {
+      toast.info("Please log in to place an order");
+      navigate({ to: "/login" });
+      return;
+    }
+    setPlacing(true);
+    const { error } = await supabase
+      .from("orders" as never)
+      .insert({ user_id: user.id, product_name: product.name, price: product.price } as never);
+    setPlacing(false);
+    if (error) {
+      toast.error(error.message || "Could not place order");
+      return;
+    }
+    toast.success(`Order placed for ${product.name}!`);
+  }
+
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <Nav />
+      <main className="pt-28 md:pt-32">
+        <div className="mx-auto max-w-6xl px-5 pb-20 md:px-8 md:pb-28">
+          <Link
+            to="/"
+            hash="products"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:brightness-110"
+          >
+            <ArrowLeft size={16} /> Back to all toys
+          </Link>
+
+          {isLoading ? (
+            <div className="mt-16 text-center text-muted-foreground">Loading toy…</div>
+          ) : isError || !product ? (
+            <div className="mt-16 rounded-3xl bg-card p-10 text-center shadow-soft">
+              <h1 className="font-display text-2xl font-bold">Toy not found</h1>
+              <p className="mt-3 text-muted-foreground">
+                We couldn't find this toy. It may have been removed.
+              </p>
+              <Link
+                to="/"
+                hash="products"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105"
+              >
+                Browse all toys <ArrowRight size={14} />
+              </Link>
+            </div>
+          ) : (
+            <div className="mt-8 grid gap-10 md:mt-12 md:grid-cols-2 md:gap-14">
+              <div
+                className={`relative grid aspect-square place-items-center overflow-hidden rounded-3xl shadow-card ${
+                  product.tint ?? "bg-primary/10"
+                }`}
+              >
+                {product.image ? (
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  <div className="text-center">
+                    <div className="text-[8rem] leading-none">{product.emoji}</div>
+                    {product.caption ? (
+                      <p className="mt-3 px-6 text-xs font-medium text-muted-foreground">
+                        {product.caption}
+                      </p>
+                    ) : null}
+                  </div>
+                )}
+              </div>
+
+              <div className="flex flex-col">
+                <span className="inline-flex w-fit items-center gap-2 rounded-full bg-card px-4 py-1.5 text-xs font-semibold text-primary shadow-soft">
+                  <Sparkles size={14} /> {product.age_group_label}
+                </span>
+                <h1 className="mt-5 font-display text-3xl font-bold leading-tight md:text-5xl">
+                  {product.name}
+                </h1>
+                <div className="mt-4 font-display text-3xl font-bold text-foreground">
+                  {product.price}
+                </div>
+                <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
+                  {product.benefit}
+                </p>
+
+                <div className="mt-6 rounded-2xl bg-card p-5 shadow-soft">
+                  <p className="font-display text-xs font-bold uppercase tracking-wider text-secondary">
+                    Why it helps
+                  </p>
+                  <p className="mt-2 text-sm text-foreground/80">
+                    Designed for the <span className="font-semibold">{product.age_group_label}</span>{" "}
+                    stage — {product.age_group_tagline.toLowerCase()}.
+                  </p>
+                </div>
+
+                <button
+                  onClick={handlePlaceOrder}
+                  disabled={placing}
+                  className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105 disabled:opacity-60 sm:w-auto"
+                >
+                  {placing ? "Placing…" : "Place Order"} <ArrowRight size={16} />
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
+}
