@@ -1,19 +1,23 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Menu, X, Sparkles, LogOut } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/use-auth";
 
 const links = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#founder", label: "Founder" },
-  { href: "#products", label: "Products" },
-  { href: "#parents", label: "For Parents" },
-  { href: "#testimonials", label: "Testimonials" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#home", label: "Home" },
+  { href: "/#about", label: "About" },
+  { href: "/#founder", label: "Founder" },
+  { href: "/#products", label: "Products" },
+  { href: "/#parents", label: "For Parents" },
+  { href: "/#testimonials", label: "Testimonials" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -21,6 +25,10 @@ export function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  async function handleLogout() {
+    await supabase.auth.signOut();
+  }
 
   return (
     <header
@@ -31,7 +39,7 @@ export function Nav() {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
-        <a href="#home" className="flex items-center gap-2">
+        <a href="/#home" className="flex items-center gap-2">
           <span className="grid h-10 w-10 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-soft">
             <Sparkles size={20} strokeWidth={2.4} />
           </span>
@@ -53,12 +61,36 @@ export function Nav() {
           ))}
         </ul>
 
-        <a
-          href="#products"
-          className="hidden rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105 lg:inline-flex"
-        >
-          Shop Products
-        </a>
+        <div className="hidden items-center gap-3 lg:flex">
+          {user ? (
+            <>
+              <span className="max-w-[180px] truncate text-sm font-semibold text-foreground/75">
+                {user.email}
+              </span>
+              <button
+                onClick={handleLogout}
+                className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105"
+              >
+                <LogOut size={14} /> Log out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="text-sm font-semibold text-foreground/80 transition-colors hover:text-primary"
+              >
+                Log in
+              </Link>
+              <Link
+                to="/signup"
+                className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105"
+              >
+                Sign up
+              </Link>
+            </>
+          )}
+        </div>
 
         <button
           onClick={() => setOpen((v) => !v)}
@@ -84,13 +116,37 @@ export function Nav() {
               </li>
             ))}
             <li className="pt-2">
-              <a
-                href="#products"
-                onClick={() => setOpen(false)}
-                className="block rounded-full bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground"
-              >
-                Shop Products
-              </a>
+              {user ? (
+                <div className="space-y-2">
+                  <div className="px-3 text-xs text-foreground/60">{user.email}</div>
+                  <button
+                    onClick={() => {
+                      setOpen(false);
+                      handleLogout();
+                    }}
+                    className="block w-full rounded-full bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground"
+                  >
+                    Log out
+                  </button>
+                </div>
+              ) : (
+                <div className="flex flex-col gap-2">
+                  <Link
+                    to="/login"
+                    onClick={() => setOpen(false)}
+                    className="block rounded-full border border-border px-5 py-3 text-center text-sm font-semibold text-foreground/80"
+                  >
+                    Log in
+                  </Link>
+                  <Link
+                    to="/signup"
+                    onClick={() => setOpen(false)}
+                    className="block rounded-full bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground"
+                  >
+                    Sign up
+                  </Link>
+                </div>
+              )}
             </li>
           </ul>
         </div>
