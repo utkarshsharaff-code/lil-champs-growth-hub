@@ -23,19 +23,19 @@ import { Nav } from "./Nav";
 import { Reveal } from "./Reveal";
 import { WaveDivider } from "./WaveDivider";
 
-const imgAtom = { url: "/products/atom-ball.jpg" };
-const imgElephant = { url: "/products/baby-elephant.jpg" };
-const imgBunnyWrist = { url: "/products/bunny-wristband.jpg" };
-const imgChompy = { url: "/products/chompy.jpg" };
-const imgEllie = { url: "/products/ellie-teether.jpg" };
-const imgGiraffe = { url: "/products/giraffe.jpg" };
-const imgHopBunny = { url: "/products/hop-bunny.jpg" };
-const imgLion = { url: "/products/lion.jpg" };
-const imgOctopus = { url: "/products/octopus.jpg" };
-const imgTeether = { url: "/products/sensory-teether.jpg" };
-const imgSnuggle = { url: "/products/snuggle.jpg" };
-const imgSplash = { url: "/products/splash-read.jpg" };
-const imgFounder = { url: "/products/founder.jpg" };
+const imgAtom = { url: "/products/atom-ball.jpg.jpg" };
+const imgElephant = { url: "/products/baby-elephant.jpg.jpg" };
+const imgBunnyWrist = { url: "/products/bunny-wristband.jpg.jpg" };
+const imgChompy = { url: "/products/chompy.jpg.jpg" };
+const imgEllie = { url: "/products/ellie-teether.jpg.jpg" };
+const imgGiraffe = { url: "/products/giraffe.jpg.jpg" };
+const imgHopBunny = { url: "/products/hop-bunny.jpg.jpg" };
+const imgLion = { url: "/products/lion.jpg.jpg" };
+const imgOctopus = { url: "/products/octopus.jpg.jpg" };
+const imgTeether = { url: "/products/sensory-teether.jpg.jpg" };
+const imgSnuggle = { url: "/products/snuggle.jpg.jpg" };
+const imgSplash = { url: "/products/splash-read.jpg.jpg" };
+const imgFounder = { url: "/products/founder.jpg.jpg" };
 
 
 
