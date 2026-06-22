@@ -77,7 +77,7 @@ const productGroups: { id: string; label: string; tagline: string; products: Pro
     tagline: "Cause-effect & fine motor",
     products: [
       { name: "Splash & Read Bath Book Set (2 Books)", benefit: "Waterproof Hippo & Dolphin books for bath-time stories", price: "₹629", emoji: "🐬", caption: "[Photo: Splash & Read Bath Book Set]", tint: "bg-primary/15" },
-      { name: "Dog Rattle Pal — Red", benefit: "Soft puppy with gentle rattle to hold & shake", price: "₹479", emoji: "🐶", caption: "[Photo: Dog Rattle Pal Red]", tint: "bg-secondary/25" },
+      { name: "Giraffe Rattle Pal — Brown", benefit: "Soft giraffe pal with a gentle rattle to hold & shake", price: "₹479", emoji: "🦒", caption: "[Photo: Giraffe Rattle Pal — Brown]", tint: "bg-secondary/25" },
     ],
   },
   {
