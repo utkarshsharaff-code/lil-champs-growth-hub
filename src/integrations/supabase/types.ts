@@ -46,9 +46,13 @@ export type Database = {
           benefit: string
           caption: string | null
           created_at: string
+          description: string | null
           emoji: string | null
+          features: string[] | null
+          how_to_play: string | null
           id: string
           image: string | null
+          milestones: string[] | null
           name: string
           price: string
           sort_order: number
@@ -62,9 +66,13 @@ export type Database = {
           benefit: string
           caption?: string | null
           created_at?: string
+          description?: string | null
           emoji?: string | null
+          features?: string[] | null
+          how_to_play?: string | null
           id?: string
           image?: string | null
+          milestones?: string[] | null
           name: string
           price: string
           sort_order?: number
@@ -78,9 +86,13 @@ export type Database = {
           benefit?: string
           caption?: string | null
           created_at?: string
+          description?: string | null
           emoji?: string | null
+          features?: string[] | null
+          how_to_play?: string | null
           id?: string
           image?: string | null
+          milestones?: string[] | null
           name?: string
           price?: string
           sort_order?: number
