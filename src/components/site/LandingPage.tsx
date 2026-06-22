@@ -131,10 +131,10 @@ const guidance = [
 ];
 
 const certifications = [
-  { icon: Award, label: "BIS Certified" },
-  { icon: ShieldCheck, label: "ASTM Safety Standard" },
-  { icon: Stethoscope, label: "Pediatrician Approved" },
-  { icon: Leaf, label: "Non-Toxic Certified" },
+  { icon: Award, label: "BIS Certified (IS 9873)" },
+  { icon: ShieldCheck, label: "EN71 Compliant" },
+  { icon: Stethoscope, label: "ASTM F963 Safe" },
+  { icon: Leaf, label: "BPA & Phthalate-Free" },
 ];
 
 const testimonials = [
