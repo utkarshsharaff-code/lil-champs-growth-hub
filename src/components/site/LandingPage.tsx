@@ -33,6 +33,9 @@ import imgHopBunny from "@/assets/products/Hop_and_Pull_Bunny_soft_toy.jpg.asset
 import imgLion from "@/assets/products/Lion_Crochet_Rattle.jpg.asset.json";
 import imgOctopus from "@/assets/products/Octopus_Soft_Toy_with_easy_to_grasp_arms.jpg.asset.json";
 import imgTeether from "@/assets/products/Sensory_Teether.jpg.asset.json";
+import imgSnuggle from "@/assets/products/Snuggle_Clutch.jpg.asset.json";
+import imgSplash from "@/assets/products/Splash_and_read.jpg.asset.json";
+
 
 /* ---------- Data ---------- */
 
