@@ -156,6 +156,56 @@ function ProductDetailPage() {
               </div>
             </div>
           )}
+
+          {product && (product.description || product.features?.length || product.how_to_play || product.milestones?.length) ? (
+            <div className="mt-12 grid gap-6 md:mt-16">
+              {(product.description || product.features?.length) && (
+                <section className="rounded-3xl bg-card p-7 shadow-card md:p-9">
+                  <h2 className="font-display text-2xl font-bold md:text-3xl">Product Description</h2>
+                  {product.description && (
+                    <p className="mt-4 text-base leading-relaxed text-foreground/80">
+                      {product.description}
+                    </p>
+                  )}
+                  {product.features && product.features.length > 0 && (
+                    <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                      {product.features.map((f) => (
+                        <li key={f} className="flex items-start gap-3 rounded-2xl bg-primary/10 px-4 py-3">
+                          <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground">
+                            <Check size={14} />
+                          </span>
+                          <span className="text-sm font-medium text-foreground">{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </section>
+              )}
+
+              {product.how_to_play && (
+                <section className="rounded-3xl bg-card p-7 shadow-card md:p-9">
+                  <h2 className="font-display text-2xl font-bold md:text-3xl">🧩 How to Play</h2>
+                  <p className="mt-4 text-base leading-relaxed text-foreground/80">
+                    {product.how_to_play}
+                  </p>
+                </section>
+              )}
+
+              {product.milestones && product.milestones.length > 0 && (
+                <section className="rounded-3xl bg-card p-7 shadow-card md:p-9">
+                  <h2 className="font-display text-2xl font-bold md:text-3xl">🎯 Benefits & Milestones</h2>
+                  <ul className="mt-6 space-y-3">
+                    {product.milestones.map((m) => (
+                      <li key={m} className="flex items-start gap-3">
+                        <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-secondary" />
+                        <span className="text-sm leading-relaxed text-foreground/85 md:text-base">{m}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+            </div>
+          ) : null}
         </div>
       </main>
       <Footer />
