@@ -1,7 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
@@ -24,6 +24,10 @@ type DbProduct = {
   tint: string | null;
   benefit: string;
   caption: string | null;
+  description: string | null;
+  features: string[] | null;
+  how_to_play: string | null;
+  milestones: string[] | null;
 };
 
 function ProductDetailPage() {
