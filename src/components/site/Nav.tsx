@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X, Sparkles, LogOut } from "lucide-react";
+import { Menu, X, Sparkles, LogOut, ShoppingBag } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
+import { useCart } from "@/context/CartContext";
 
 const links = [
   { href: "/#home", label: "Home" },
@@ -18,6 +19,23 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { user } = useAuth();
+  const { totalCount } = useCart();
+
+  const CartIcon = ({ onClick }: { onClick?: () => void }) => (
+    <Link
+      to="/cart"
+      onClick={onClick}
+      aria-label={`Cart (${totalCount} items)`}
+      className="relative grid h-10 w-10 place-items-center rounded-full bg-card shadow-soft transition hover:brightness-105"
+    >
+      <ShoppingBag size={18} />
+      {totalCount > 0 && (
+        <span className="absolute -right-1 -top-1 grid h-5 min-w-[1.25rem] place-items-center rounded-full bg-primary px-1 text-[10px] font-bold leading-none text-primary-foreground shadow-soft">
+          {totalCount > 99 ? "99+" : totalCount}
+        </span>
+      )}
+    </Link>
+  );
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -73,6 +91,7 @@ export function Nav() {
               <span className="max-w-[180px] truncate text-sm font-semibold text-foreground/75">
                 {user.email}
               </span>
+              <CartIcon />
               <button
                 onClick={handleLogout}
                 className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105"
@@ -88,6 +107,7 @@ export function Nav() {
               >
                 Log in
               </Link>
+              <CartIcon />
               <Link
                 to="/signup"
                 className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105"
@@ -98,13 +118,16 @@ export function Nav() {
           )}
         </div>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-full bg-card shadow-soft lg:hidden"
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <CartIcon />
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="grid h-10 w-10 place-items-center rounded-full bg-card shadow-soft"
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </nav>
 
       {open && (

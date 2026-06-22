@@ -1,10 +1,9 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
-import { ArrowLeft, ArrowRight, Check, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, ShoppingBag, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import { useAuth } from "@/hooks/use-auth";
+import { useCart } from "@/context/CartContext";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/LandingPage";
 
@@ -32,9 +31,7 @@ type DbProduct = {
 
 function ProductDetailPage() {
   const { id } = Route.useParams();
-  const { user } = useAuth();
-  const navigate = useNavigate();
-  const [placing, setPlacing] = useState(false);
+  const { addItem } = useCart();
 
   const { data: product, isLoading, isError } = useQuery({
     queryKey: ["product", id],
@@ -49,23 +46,15 @@ function ProductDetailPage() {
     },
   });
 
-  async function handlePlaceOrder() {
+  function handleAddToCart() {
     if (!product) return;
-    if (!user) {
-      toast.info("Please log in to place an order");
-      navigate({ to: "/login" });
-      return;
-    }
-    setPlacing(true);
-    const { error } = await supabase
-      .from("orders" as never)
-      .insert({ user_id: user.id, product_name: product.name, price: product.price } as never);
-    setPlacing(false);
-    if (error) {
-      toast.error(error.message || "Could not place order");
-      return;
-    }
-    toast.success(`Order placed for ${product.name}!`);
+    addItem({
+      productId: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+    });
+    toast.success("Added to cart");
   }
 
   return (
@@ -147,11 +136,10 @@ function ProductDetailPage() {
                 </div>
 
                 <button
-                  onClick={handlePlaceOrder}
-                  disabled={placing}
-                  className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105 disabled:opacity-60 sm:w-auto"
+                  onClick={handleAddToCart}
+                  className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105 sm:w-auto"
                 >
-                  {placing ? "Placing…" : "Place Order"} <ArrowRight size={16} />
+                  <ShoppingBag size={16} /> Add to cart <ArrowRight size={16} />
                 </button>
               </div>
             </div>

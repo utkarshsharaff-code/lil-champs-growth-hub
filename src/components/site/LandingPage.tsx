@@ -18,12 +18,13 @@ import {
   Award,
   Stethoscope,
   Quote,
+  ShoppingBag,
 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import { useAuth } from "@/hooks/use-auth";
+import { useCart } from "@/context/CartContext";
 import { Nav } from "./Nav";
 import { Reveal } from "./Reveal";
 import { WaveDivider } from "./WaveDivider";
@@ -407,9 +408,7 @@ type DbProduct = {
 };
 
 function Products() {
-  const { user } = useAuth();
-  const navigate = useNavigate();
-  const [placing, setPlacing] = useState<string | null>(null);
+  const { addItem } = useCart();
 
   const { data, isLoading } = useQuery({
     queryKey: ["products"],
@@ -443,22 +442,9 @@ function Products() {
   const activeId = active ?? groups[0]?.id ?? null;
   const group = groups.find((g) => g.id === activeId);
 
-  async function handlePlaceOrder(p: DbProduct) {
-    if (!user) {
-      toast.info("Please log in to place an order");
-      navigate({ to: "/login" });
-      return;
-    }
-    setPlacing(p.id);
-    const { error } = await supabase
-      .from("orders" as never)
-      .insert({ user_id: user.id, product_name: p.name, price: p.price } as never);
-    setPlacing(null);
-    if (error) {
-      toast.error(error.message || "Could not place order");
-      return;
-    }
-    toast.success(`Order placed for ${p.name}!`);
+  function handleAddToCart(p: DbProduct) {
+    addItem({ productId: p.id, name: p.name, price: p.price, image: p.image });
+    toast.success("Added to cart");
   }
 
   return (
@@ -545,11 +531,10 @@ function Products() {
                       </div>
                       <div className="mt-5 flex flex-wrap items-center gap-3">
                         <button
-                          onClick={() => handlePlaceOrder(p)}
-                          disabled={placing === p.id}
-                          className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105 disabled:opacity-60"
+                          onClick={() => handleAddToCart(p)}
+                          className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105"
                         >
-                          {placing === p.id ? "Placing…" : "Place Order"} <ArrowRight size={14} />
+                          <ShoppingBag size={14} /> Add to cart
                         </button>
                         <Link
                           to="/product/$id"
