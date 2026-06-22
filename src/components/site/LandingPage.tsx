@@ -20,10 +20,10 @@ import {
   Quote,
 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import { useAuth } from "@/hooks/use-auth";
+import { useCart } from "@/context/CartContext";
 import { Nav } from "./Nav";
 import { Reveal } from "./Reveal";
 import { WaveDivider } from "./WaveDivider";
