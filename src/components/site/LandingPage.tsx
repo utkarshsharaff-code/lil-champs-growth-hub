@@ -18,6 +18,7 @@ import {
   Award,
   Stethoscope,
   Quote,
+  ShoppingBag,
 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
