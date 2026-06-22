@@ -69,7 +69,14 @@ function MyOrdersPage() {
                   className="flex items-center justify-between gap-4 rounded-2xl bg-card p-5 shadow-card"
                 >
                   <div>
-                    <p className="font-display text-lg font-bold">{o.product_name}</p>
+                    <p className="font-display text-lg font-bold">
+                      {o.product_name}
+                      {o.quantity > 1 && (
+                        <span className="ml-2 text-sm font-semibold text-muted-foreground">
+                          × {o.quantity}
+                        </span>
+                      )}
+                    </p>
                     <p className="mt-1 text-xs text-muted-foreground">
                       {new Date(o.created_at).toLocaleString()}
                     </p>
