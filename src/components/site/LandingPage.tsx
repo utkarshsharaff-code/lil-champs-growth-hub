@@ -321,17 +321,18 @@ function Founder() {
             <div className="relative mx-auto aspect-[4/5] w-full max-w-sm">
               <div className="absolute -inset-4 rounded-[2rem] bg-secondary/30" />
               <div className="relative h-full w-full overflow-hidden rounded-[2rem] bg-card shadow-soft">
-                <div className="grid h-full w-full place-items-center bg-gradient-to-br from-highlight/60 via-card to-primary/15">
-                  <div className="text-center">
-                    <div className="text-7xl">👩‍🍼</div>
-                    <p className="mt-3 px-6 font-display text-sm font-semibold text-muted-foreground">
-                      [Photo: Utkarsh Sharaff — Founder]
-                    </p>
-                  </div>
-                </div>
+                <img
+                  src={imgFounder.url}
+                  alt="Utkarsh Sharaff — Founder of Lil Champs"
+                  className="h-full w-full object-cover object-top"
+                />
               </div>
             </div>
+            <p className="mt-4 text-center font-display text-sm font-semibold text-muted-foreground">
+              Utkarsh Sharaff — Founder
+            </p>
           </Reveal>
+
 
           <Reveal delay={120}>
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary">
