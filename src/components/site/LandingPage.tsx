@@ -64,7 +64,7 @@ const productGroups: { id: string; label: string; tagline: string; products: Pro
     tagline: "First focus, sound & comfort",
     products: [
       { name: "Baby Elephant Squeaky", benefit: "Squeaky sound for early auditory play & grasping", price: "₹349", emoji: "🐘", caption: "[Photo: Baby Elephant Squeaky]", tint: "bg-highlight/40", image: imgElephant.url },
-      { name: "Snuggle Clutch", benefit: "High-contrast clutch with crinkly ears", price: "₹529", emoji: "🐭", caption: "[Photo: Snuggle Clutch]", tint: "bg-primary/15" },
+      { name: "Snuggle Clutch", benefit: "High-contrast clutch with crinkly ears", price: "₹529", emoji: "🐭", caption: "[Photo: Snuggle Clutch]", tint: "bg-primary/15", image: imgSnuggle.url },
     ],
   },
   {
