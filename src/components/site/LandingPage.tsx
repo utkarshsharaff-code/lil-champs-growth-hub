@@ -60,7 +60,7 @@ const productGroups: { id: string; label: string; tagline: string; products: Pro
     label: "0–3 Months",
     tagline: "First focus, sound & comfort",
     products: [
-      { name: "Baby Elephant Squeaky", benefit: "Squeaky sound for early auditory play & grasping", price: "₹349", emoji: "🐘", caption: "[Photo: Baby Elephant Squeaky]", tint: "bg-highlight/40" },
+      { name: "Baby Elephant Squeaky", benefit: "Squeaky sound for early auditory play & grasping", price: "₹349", emoji: "🐘", caption: "[Photo: Baby Elephant Squeaky]", tint: "bg-highlight/40", image: imgElephant.url },
       { name: "Snuggle Clutch", benefit: "High-contrast clutch with crinkly ears", price: "₹529", emoji: "🐭", caption: "[Photo: Snuggle Clutch]", tint: "bg-primary/15" },
     ],
   },
@@ -69,10 +69,10 @@ const productGroups: { id: string; label: string; tagline: string; products: Pro
     label: "3–6 Months",
     tagline: "Reach, grasp & sensory exploration",
     products: [
-      { name: "Sensory Teether", benefit: "Multi-texture silicone soothes gums & builds grip", price: "₹449", emoji: "🦷", caption: "[Photo: Sensory Teether]", tint: "bg-secondary/25" },
-      { name: "Atom Ball & Rattle", benefit: "Bendable arms for gripping, shaking & motor skills", price: "₹649", emoji: "⚛️", caption: "[Photo: Atom Ball & Rattle]", tint: "bg-primary/15" },
-      { name: "Ellie Grip Teether (Set of 2)", benefit: "Elephant teether with multi-zone dot textures", price: "₹599", emoji: "🐘", caption: "[Photo: Ellie Grip Teether]", tint: "bg-highlight/40" },
-      { name: "Bunny Wristband Rattle", benefit: "Wearable rattle for movement & cause-effect play", price: "₹399", emoji: "🐰", caption: "[Photo: Bunny Wristband Rattle]", tint: "bg-secondary/25" },
+      { name: "Sensory Teether", benefit: "Multi-texture silicone soothes gums & builds grip", price: "₹449", emoji: "🦷", caption: "[Photo: Sensory Teether]", tint: "bg-secondary/25", image: imgTeether.url },
+      { name: "Atom Ball & Rattle", benefit: "Bendable arms for gripping, shaking & motor skills", price: "₹649", emoji: "⚛️", caption: "[Photo: Atom Ball & Rattle]", tint: "bg-primary/15", image: imgAtom.url },
+      { name: "Ellie Grip Teether (Set of 2)", benefit: "Elephant teether with multi-zone dot textures", price: "₹599", emoji: "🐘", caption: "[Photo: Ellie Grip Teether]", tint: "bg-highlight/40", image: imgEllie.url },
+      { name: "Bunny Wristband Rattle", benefit: "Wearable rattle for movement & cause-effect play", price: "₹399", emoji: "🐰", caption: "[Photo: Bunny Wristband Rattle]", tint: "bg-secondary/25", image: imgBunnyWrist.url },
     ],
   },
   {
@@ -80,8 +80,8 @@ const productGroups: { id: string; label: string; tagline: string; products: Pro
     label: "6–9 Months",
     tagline: "Sit, explore & coordinate",
     products: [
-      { name: "Octopus Soft Toy", benefit: "Easy-grasp arms with crinkle for bilateral coordination", price: "₹749", emoji: "🐙", caption: "[Photo: Octopus Soft Toy]", tint: "bg-highlight/40" },
-      { name: "Lion Crochet Rattle", benefit: "Handcrafted lion with wooden ring & rattle inside", price: "₹699", emoji: "🦁", caption: "[Photo: Lion Crochet Rattle]", tint: "bg-primary/15" },
+      { name: "Octopus Soft Toy", benefit: "Easy-grasp arms with crinkle for bilateral coordination", price: "₹749", emoji: "🐙", caption: "[Photo: Octopus Soft Toy]", tint: "bg-highlight/40", image: imgOctopus.url },
+      { name: "Lion Crochet Rattle", benefit: "Handcrafted lion with wooden ring & rattle inside", price: "₹699", emoji: "🦁", caption: "[Photo: Lion Crochet Rattle]", tint: "bg-primary/15", image: imgLion.url },
     ],
   },
   {
@@ -90,7 +90,7 @@ const productGroups: { id: string; label: string; tagline: string; products: Pro
     tagline: "Cause-effect & fine motor",
     products: [
       { name: "Splash & Read Bath Book Set (2 Books)", benefit: "Waterproof Hippo & Dolphin books for bath-time stories", price: "₹629", emoji: "🐬", caption: "[Photo: Splash & Read Bath Book Set]", tint: "bg-primary/15" },
-      { name: "Giraffe Rattle Pal — Brown", benefit: "Soft giraffe pal with a gentle rattle to hold & shake", price: "₹479", emoji: "🦒", caption: "[Photo: Giraffe Rattle Pal — Brown]", tint: "bg-secondary/25" },
+      { name: "Giraffe Rattle Pal — Brown", benefit: "Soft giraffe pal with a gentle rattle to hold & shake", price: "₹479", emoji: "🦒", caption: "[Photo: Giraffe Rattle Pal — Brown]", tint: "bg-secondary/25", image: imgGiraffe.url },
     ],
   },
   {
@@ -98,11 +98,12 @@ const productGroups: { id: string; label: string; tagline: string; products: Pro
     label: "12–15 Months",
     tagline: "Walk, hug & imagine",
     products: [
-      { name: "Hop & Pull Bunny", benefit: "Stretchable ears & limbs for pulling & tactile play", price: "₹779", emoji: "🐰", caption: "[Photo: Hop & Pull Bunny]", tint: "bg-highlight/40" },
-      { name: "Chompy — Alligator Plush", benefit: "Soft, friendly plush for cuddles & emotional comfort", price: "₹719", emoji: "🐊", caption: "[Photo: Chompy Alligator Plush]", tint: "bg-primary/15" },
+      { name: "Hop & Pull Bunny", benefit: "Stretchable ears & limbs for pulling & tactile play", price: "₹779", emoji: "🐰", caption: "[Photo: Hop & Pull Bunny]", tint: "bg-highlight/40", image: imgHopBunny.url },
+      { name: "Chompy — Alligator Plush", benefit: "Soft, friendly plush for cuddles & emotional comfort", price: "₹719", emoji: "🐊", caption: "[Photo: Chompy Alligator Plush]", tint: "bg-primary/15", image: imgChompy.url },
     ],
   },
 ];
+
 
 const guidance = [
   {
