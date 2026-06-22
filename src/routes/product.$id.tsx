@@ -136,11 +136,10 @@ function ProductDetailPage() {
                 </div>
 
                 <button
-                  onClick={handlePlaceOrder}
-                  disabled={placing}
-                  className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105 disabled:opacity-60 sm:w-auto"
+                  onClick={handleAddToCart}
+                  className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105 sm:w-auto"
                 >
-                  {placing ? "Placing…" : "Place Order"} <ArrowRight size={16} />
+                  <ShoppingBag size={16} /> Add to cart <ArrowRight size={16} />
                 </button>
               </div>
             </div>
