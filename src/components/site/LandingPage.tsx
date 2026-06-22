@@ -418,16 +418,26 @@ function Products() {
           {group.products.map((p, i) => (
             <Reveal key={`${group.id}-${p.name}`} delay={i * 90}>
               <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-card shadow-card hover-lift">
-                <div className={`grid aspect-[4/3] place-items-center ${p.tint}`}>
-                  <div className="text-center">
-                    <div className="text-7xl transition-transform duration-500 group-hover:scale-110">
-                      {p.emoji}
+                <div className={`relative grid aspect-[4/3] place-items-center overflow-hidden ${p.tint}`}>
+                  {p.image ? (
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="text-center">
+                      <div className="text-7xl transition-transform duration-500 group-hover:scale-110">
+                        {p.emoji}
+                      </div>
+                      <p className="mt-2 px-4 text-xs font-medium text-muted-foreground">
+                        {p.caption}
+                      </p>
                     </div>
-                    <p className="mt-2 px-4 text-xs font-medium text-muted-foreground">
-                      {p.caption}
-                    </p>
-                  </div>
+                  )}
                 </div>
+
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="font-display text-lg font-bold">{p.name}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">{p.benefit}</p>
