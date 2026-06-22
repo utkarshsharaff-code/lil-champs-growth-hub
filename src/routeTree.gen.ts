@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as MyOrdersRouteImport } from './routes/my-orders'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
   path: '/signup',
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/my-orders': typeof MyOrdersRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/signup': typeof SignupRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/my-orders': typeof MyOrdersRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/signup': typeof SignupRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +70,27 @@ export interface FileRoutesById {
   '/my-orders': typeof MyOrdersRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/signup': typeof SignupRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/my-orders' | '/privacy-policy' | '/signup'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/my-orders'
+    | '/privacy-policy'
+    | '/signup'
+    | '/terms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/my-orders' | '/privacy-policy' | '/signup'
-  id: '__root__' | '/' | '/login' | '/my-orders' | '/privacy-policy' | '/signup'
+  to: '/' | '/login' | '/my-orders' | '/privacy-policy' | '/signup' | '/terms'
+  id:
+    | '__root__'
+    | '/'
+    | '/login'
+    | '/my-orders'
+    | '/privacy-policy'
+    | '/signup'
+    | '/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,10 +99,18 @@ export interface RootRouteChildren {
   MyOrdersRoute: typeof MyOrdersRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   SignupRoute: typeof SignupRoute
+  TermsRoute: typeof TermsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/signup': {
       id: '/signup'
       path: '/signup'
@@ -125,6 +155,7 @@ const rootRouteChildren: RootRouteChildren = {
   MyOrdersRoute: MyOrdersRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   SignupRoute: SignupRoute,
+  TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
