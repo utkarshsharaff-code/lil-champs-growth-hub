@@ -33,6 +33,9 @@ import imgHopBunny from "@/assets/products/Hop_and_Pull_Bunny_soft_toy.jpg.asset
 import imgLion from "@/assets/products/Lion_Crochet_Rattle.jpg.asset.json";
 import imgOctopus from "@/assets/products/Octopus_Soft_Toy_with_easy_to_grasp_arms.jpg.asset.json";
 import imgTeether from "@/assets/products/Sensory_Teether.jpg.asset.json";
+import imgSnuggle from "@/assets/products/Snuggle_Clutch.jpg.asset.json";
+import imgSplash from "@/assets/products/Splash_and_read.jpg.asset.json";
+
 
 /* ---------- Data ---------- */
 
@@ -61,7 +64,7 @@ const productGroups: { id: string; label: string; tagline: string; products: Pro
     tagline: "First focus, sound & comfort",
     products: [
       { name: "Baby Elephant Squeaky", benefit: "Squeaky sound for early auditory play & grasping", price: "₹349", emoji: "🐘", caption: "[Photo: Baby Elephant Squeaky]", tint: "bg-highlight/40", image: imgElephant.url },
-      { name: "Snuggle Clutch", benefit: "High-contrast clutch with crinkly ears", price: "₹529", emoji: "🐭", caption: "[Photo: Snuggle Clutch]", tint: "bg-primary/15" },
+      { name: "Snuggle Clutch", benefit: "High-contrast clutch with crinkly ears", price: "₹529", emoji: "🐭", caption: "[Photo: Snuggle Clutch]", tint: "bg-primary/15", image: imgSnuggle.url },
     ],
   },
   {
@@ -89,7 +92,7 @@ const productGroups: { id: string; label: string; tagline: string; products: Pro
     label: "9–12 Months",
     tagline: "Cause-effect & fine motor",
     products: [
-      { name: "Splash & Read Bath Book Set (2 Books)", benefit: "Waterproof Hippo & Dolphin books for bath-time stories", price: "₹629", emoji: "🐬", caption: "[Photo: Splash & Read Bath Book Set]", tint: "bg-primary/15" },
+      { name: "Splash & Read Bath Book Set (2 Books)", benefit: "Waterproof Hippo & Dolphin books for bath-time stories", price: "₹629", emoji: "🐬", caption: "[Photo: Splash & Read Bath Book Set]", tint: "bg-primary/15", image: imgSplash.url },
       { name: "Giraffe Rattle Pal — Brown", benefit: "Soft giraffe pal with a gentle rattle to hold & shake", price: "₹479", emoji: "🦒", caption: "[Photo: Giraffe Rattle Pal — Brown]", tint: "bg-secondary/25", image: imgGiraffe.url },
     ],
   },
