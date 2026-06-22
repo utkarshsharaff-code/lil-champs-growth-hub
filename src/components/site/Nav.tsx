@@ -125,6 +125,13 @@ export function Nav() {
               {user ? (
                 <div className="space-y-2">
                   <div className="px-3 text-xs text-foreground/60">{user.email}</div>
+                  <Link
+                    to="/my-orders"
+                    onClick={() => setOpen(false)}
+                    className="block rounded-full border border-border px-5 py-3 text-center text-sm font-semibold text-foreground/80"
+                  >
+                    My Orders
+                  </Link>
                   <button
                     onClick={() => {
                       setOpen(false);
