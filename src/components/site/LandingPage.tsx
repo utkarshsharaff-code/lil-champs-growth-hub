@@ -507,7 +507,11 @@ function Products() {
               {group.products.map((p, i) => (
                 <Reveal key={p.id} delay={i * 90}>
                   <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-card shadow-card hover-lift">
-                    <div className={`relative grid aspect-[4/3] place-items-center overflow-hidden ${p.tint ?? "bg-primary/10"}`}>
+                    <Link
+                      to="/product/$id"
+                      params={{ id: p.id }}
+                      className={`relative grid aspect-[4/3] place-items-center overflow-hidden ${p.tint ?? "bg-primary/10"}`}
+                    >
                       {p.image ? (
                         <img
                           src={p.image}
@@ -525,21 +529,36 @@ function Products() {
                           </p>
                         </div>
                       )}
-                    </div>
+                    </Link>
 
                     <div className="flex flex-1 flex-col p-6">
-                      <h3 className="font-display text-lg font-bold">{p.name}</h3>
+                      <Link
+                        to="/product/$id"
+                        params={{ id: p.id }}
+                        className="font-display text-lg font-bold transition hover:text-primary"
+                      >
+                        <h3>{p.name}</h3>
+                      </Link>
                       <p className="mt-1 text-sm text-muted-foreground">{p.benefit}</p>
                       <div className="mt-4 flex items-baseline gap-2">
                         <span className="font-display text-xl font-bold text-foreground">{p.price}</span>
                       </div>
-                      <button
-                        onClick={() => handlePlaceOrder(p)}
-                        disabled={placing === p.id}
-                        className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105 disabled:opacity-60"
-                      >
-                        {placing === p.id ? "Placing…" : "Place Order"} <ArrowRight size={14} />
-                      </button>
+                      <div className="mt-5 flex flex-wrap items-center gap-3">
+                        <button
+                          onClick={() => handlePlaceOrder(p)}
+                          disabled={placing === p.id}
+                          className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:brightness-105 disabled:opacity-60"
+                        >
+                          {placing === p.id ? "Placing…" : "Place Order"} <ArrowRight size={14} />
+                        </button>
+                        <Link
+                          to="/product/$id"
+                          params={{ id: p.id }}
+                          className="text-sm font-semibold text-primary transition hover:brightness-110"
+                        >
+                          View details →
+                        </Link>
+                      </div>
                     </div>
                   </article>
                 </Reveal>
