@@ -64,6 +64,12 @@ export function Nav() {
         <div className="hidden items-center gap-3 lg:flex">
           {user ? (
             <>
+              <Link
+                to="/my-orders"
+                className="text-sm font-semibold text-foreground/80 transition-colors hover:text-primary"
+              >
+                My Orders
+              </Link>
               <span className="max-w-[180px] truncate text-sm font-semibold text-foreground/75">
                 {user.email}
               </span>
@@ -119,6 +125,13 @@ export function Nav() {
               {user ? (
                 <div className="space-y-2">
                   <div className="px-3 text-xs text-foreground/60">{user.email}</div>
+                  <Link
+                    to="/my-orders"
+                    onClick={() => setOpen(false)}
+                    className="block rounded-full border border-border px-5 py-3 text-center text-sm font-semibold text-foreground/80"
+                  >
+                    My Orders
+                  </Link>
                   <button
                     onClick={() => {
                       setOpen(false);
