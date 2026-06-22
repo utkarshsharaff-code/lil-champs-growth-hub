@@ -348,8 +348,10 @@ function Founder() {
                 the parent and founder behind Lil Champs.
               </p>
               <p className="text-muted-foreground">
-                [A line about Utkarsh's background and what led to Lil Champs]
+                Before Lil Champs, I worked as an Investment Banker and as a Venture Capitalist —
+                experiences that taught me how to spot what truly matters and build with intention.
               </p>
+
               <div className="rounded-2xl bg-card p-5 shadow-soft">
                 <p className="font-display text-sm font-bold uppercase tracking-wider text-secondary">
                   The Problem
