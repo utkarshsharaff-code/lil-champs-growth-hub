@@ -35,6 +35,9 @@ import imgOctopus from "@/assets/products/Octopus_Soft_Toy_with_easy_to_grasp_ar
 import imgTeether from "@/assets/products/Sensory_Teether.jpg.asset.json";
 import imgSnuggle from "@/assets/products/Snuggle_Clutch.jpg.asset.json";
 import imgSplash from "@/assets/products/Splash_and_read.jpg.asset.json";
+import imgFounder from "@/assets/products/utkarsh-sharaff-founder.png.asset.json";
+
+
 
 
 /* ---------- Data ---------- */
@@ -318,17 +321,18 @@ function Founder() {
             <div className="relative mx-auto aspect-[4/5] w-full max-w-sm">
               <div className="absolute -inset-4 rounded-[2rem] bg-secondary/30" />
               <div className="relative h-full w-full overflow-hidden rounded-[2rem] bg-card shadow-soft">
-                <div className="grid h-full w-full place-items-center bg-gradient-to-br from-highlight/60 via-card to-primary/15">
-                  <div className="text-center">
-                    <div className="text-7xl">👩‍🍼</div>
-                    <p className="mt-3 px-6 font-display text-sm font-semibold text-muted-foreground">
-                      [Photo: Utkarsh Sharaff — Founder]
-                    </p>
-                  </div>
-                </div>
+                <img
+                  src={imgFounder.url}
+                  alt="Utkarsh Sharaff — Founder of Lil Champs"
+                  className="h-full w-full object-cover object-top"
+                />
               </div>
             </div>
+            <p className="mt-4 text-center font-display text-sm font-semibold text-muted-foreground">
+              Utkarsh Sharaff — Founder
+            </p>
           </Reveal>
+
 
           <Reveal delay={120}>
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary">
@@ -344,8 +348,10 @@ function Founder() {
                 the parent and founder behind Lil Champs.
               </p>
               <p className="text-muted-foreground">
-                [A line about Utkarsh's background and what led to Lil Champs]
+                Before Lil Champs, I worked as an Investment Banker and as a Venture Capitalist —
+                experiences that taught me how to spot what truly matters and build with intention.
               </p>
+
               <div className="rounded-2xl bg-card p-5 shadow-soft">
                 <p className="font-display text-sm font-bold uppercase tracking-wider text-secondary">
                   The Problem
