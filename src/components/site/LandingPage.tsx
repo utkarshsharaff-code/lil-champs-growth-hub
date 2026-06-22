@@ -23,6 +23,17 @@ import { Nav } from "./Nav";
 import { Reveal } from "./Reveal";
 import { WaveDivider } from "./WaveDivider";
 
+import imgAtom from "@/assets/products/Atom_ball_Sensory_Grasping.jpg.asset.json";
+import imgElephant from "@/assets/products/Baby_Elephant_Squeaky.jpg.asset.json";
+import imgBunnyWrist from "@/assets/products/Bunny_Wristband_Rattle.jpg.asset.json";
+import imgChompy from "@/assets/products/Chompy-_Alligator_Plush_Toy.jpg.asset.json";
+import imgEllie from "@/assets/products/Ellie_Grip_Teether.jpg.asset.json";
+import imgGiraffe from "@/assets/products/Giraffe_Rattle_Pla_-_Brown.jpg.asset.json";
+import imgHopBunny from "@/assets/products/Hop_and_Pull_Bunny_soft_toy.jpg.asset.json";
+import imgLion from "@/assets/products/Lion_Crochet_Rattle.jpg.asset.json";
+import imgOctopus from "@/assets/products/Octopus_Soft_Toy_with_easy_to_grasp_arms.jpg.asset.json";
+import imgTeether from "@/assets/products/Sensory_Teether.jpg.asset.json";
+
 /* ---------- Data ---------- */
 
 const reassurance = [
@@ -39,7 +50,9 @@ type Product = {
   emoji: string;
   caption: string;
   tint: string;
+  image?: string;
 };
+
 
 const productGroups: { id: string; label: string; tagline: string; products: Product[] }[] = [
   {
