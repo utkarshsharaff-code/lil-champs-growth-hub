@@ -13,6 +13,7 @@ type Order = {
   id: string;
   product_name: string;
   price: string;
+  quantity: number;
   created_at: string;
 };
 
