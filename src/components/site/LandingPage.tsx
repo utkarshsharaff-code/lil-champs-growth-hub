@@ -737,12 +737,12 @@ function Footer() {
             </div>
 
             <a
-              href="https://maps.google.com"
+              href="https://www.google.com/maps/search/?api=1&query=DLF+Cyber+Park+Udyog+Vihar+Sector+20+Gurugram"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-5 inline-flex items-center gap-2 text-sm text-background/80 hover:text-background"
             >
-              <MapPin size={16} /> [Address placeholder] · Find us
+              <MapPin size={16} /> 4th Floor, Tower C, DLF Cyberpark, Udyog Vihar, Sector 20, Gurugram, Haryana 122016 · Find us
             </a>
           </div>
 
