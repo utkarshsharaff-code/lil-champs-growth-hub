@@ -64,6 +64,12 @@ export function Nav() {
         <div className="hidden items-center gap-3 lg:flex">
           {user ? (
             <>
+              <Link
+                to="/my-orders"
+                className="text-sm font-semibold text-foreground/80 transition-colors hover:text-primary"
+              >
+                My Orders
+              </Link>
               <span className="max-w-[180px] truncate text-sm font-semibold text-foreground/75">
                 {user.email}
               </span>
