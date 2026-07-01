@@ -26,6 +26,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useCart } from "@/context/CartContext";
 import { Nav } from "./Nav";
+import { Logo } from "./Logo";
 import { Reveal } from "./Reveal";
 import { WaveDivider } from "./WaveDivider";
 
