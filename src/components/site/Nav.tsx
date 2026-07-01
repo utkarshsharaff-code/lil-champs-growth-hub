@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X, Sparkles, LogOut, ShoppingBag } from "lucide-react";
+import { Menu, X, LogOut, ShoppingBag } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { useCart } from "@/context/CartContext";
+import { Logo } from "./Logo";
 
 const links = [
   { href: "/#home", label: "Home" },
