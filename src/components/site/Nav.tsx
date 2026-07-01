@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X, Sparkles, LogOut, ShoppingBag } from "lucide-react";
+import { Menu, X, LogOut, ShoppingBag } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { useCart } from "@/context/CartContext";
+import { Logo } from "./Logo";
 
 const links = [
   { href: "/#home", label: "Home" },
@@ -58,12 +59,7 @@ export function Nav() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
         <a href="/#home" className="flex items-center gap-2">
-          <span className="grid h-10 w-10 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-soft">
-            <Sparkles size={20} strokeWidth={2.4} />
-          </span>
-          <span className="font-display text-xl font-bold tracking-tight">
-            Lil Champs
-          </span>
+          <Logo className="h-10 w-auto" />
         </a>
 
         <ul className="hidden items-center gap-7 lg:flex">

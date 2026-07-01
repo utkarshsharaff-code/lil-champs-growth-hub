@@ -26,6 +26,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useCart } from "@/context/CartContext";
 import { Nav } from "./Nav";
+import { Logo } from "./Logo";
 import { Reveal } from "./Reveal";
 import { WaveDivider } from "./WaveDivider";
 
@@ -694,10 +695,7 @@ export function Footer() {
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-3 md:px-8 md:py-20">
           <div>
             <div className="flex items-center gap-2">
-              <span className="grid h-10 w-10 place-items-center rounded-2xl bg-primary text-primary-foreground">
-                <Sparkles size={20} strokeWidth={2.4} />
-              </span>
-              <span className="font-display text-xl font-bold">Lil Champs</span>
+              <Logo className="h-10 w-auto" variant="dark" />
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-background/75">
               Your trusted partner to unlock your child's potential.
