@@ -140,12 +140,12 @@ const certifications = [
 ];
 
 const testimonials = [
-  { name: "Aarti M.", quote: "The high-contrast kit kept my 2-month-old engaged like nothing else. Finally toys I trust.", initial: "A" },
-  { name: "Rohan & Priya", quote: "Beautifully made and clearly thought through by people who understand babies.", initial: "R" },
-  { name: "Neha S.", quote: "My daughter's pincer grip improved so much with the coin box. Love the Montessori approach.", initial: "N" },
-  { name: "Karthik R.", quote: "Safe, sturdy, and genuinely developmental. Worth every rupee.", initial: "K" },
-  { name: "Sanya K.", quote: "Lil Champs has become our go-to gift for every new parent we know.", initial: "S" },
-  { name: "Meera J.", quote: "The age-stage guidance helped me pick exactly the right toy. So reassuring.", initial: "M" },
+  { name: "Priya S., Mumbai", quote: "The Sensory Teether was a lifesaver during teething — soft, easy to clean, and my baby actually loves it.", initial: "P" },
+  { name: "Rahul & Anjali, Bengaluru", quote: "Beautifully made and clearly thought through by people who understand babies. The Atom Ball is a daily favourite.", initial: "R" },
+  { name: "Neha K., Delhi", quote: "My daughter's grip improved so much with the Lion Crochet Rattle. Love the Montessori approach.", initial: "N" },
+  { name: "Karthik R., Chennai", quote: "Safe, sturdy, and genuinely developmental. The non-toxic materials gave me real peace of mind.", initial: "K" },
+  { name: "Sanya M., Gurugram", quote: "Lil Champs has become our go-to gift for every new parent we know. The packaging feels premium.", initial: "S" },
+  { name: "Meera J., Pune", quote: "The age-stage guidance helped me pick exactly the right toy for my 6-month-old. So reassuring.", initial: "M" },
 ];
 
 /* ---------- Page ---------- */
