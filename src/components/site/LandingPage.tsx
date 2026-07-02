@@ -792,7 +792,7 @@ export function Footer() {
 
         <div className="border-t border-background/10">
           <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 text-xs text-background/60 sm:flex-row md:px-8">
-            <p>© {new Date().getFullYear()} Lil Champs. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Lil Champs® — a registered trademark, based in Gurugram, Haryana, India. All rights reserved.</p>
             <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
               <a href="/privacy-policy" className="transition hover:text-background">Privacy Policy</a>
               <a href="/terms" className="transition hover:text-background">Terms of Service</a>
