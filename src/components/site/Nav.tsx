@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X, LogOut, ShoppingBag } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -57,6 +57,12 @@ export function Nav() {
           : "bg-transparent"
       }`}
     >
+      <div className="bg-primary text-primary-foreground">
+        <p className="mx-auto max-w-7xl px-5 py-1.5 text-center text-xs font-semibold md:text-sm">
+          Free shipping on all orders over ₹499 — loved by parents across India
+        </p>
+      </div>
+      
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
         <a href="/#home" className="flex items-center gap-2">
           <Logo className="h-10 w-auto" />
