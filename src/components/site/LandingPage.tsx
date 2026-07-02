@@ -30,7 +30,7 @@ import { Logo } from "./Logo";
 import { Reveal } from "./Reveal";
 import { WaveDivider } from "./WaveDivider";
 import { AgeFinder } from "@/components/site/AgeFinder";
-import { ShopByCategory } from "@/components/site/ShopByCategory";
+import { ShopByCategory } from "@/components/site/site/ShopByCategory";
 
 const imgAtom = { url: "/products/atom-ball.jpg.jpg" };
 const imgElephant = { url: "/products/baby-elephant.jpg.jpg" };
