@@ -86,6 +86,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Safe, expert-curated developmental toys for every stage of your baby's first 15 months." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: "https://lil-champs-growth-hub.vercel.app/lil-champs-og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:url", content: "https://lil-champs-growth-hub.vercel.app/" },
+      { name: "twitter:image", content: "https://lil-champs-growth-hub.vercel.app/lil-champs-og-image.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
