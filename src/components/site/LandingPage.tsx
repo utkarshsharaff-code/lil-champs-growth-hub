@@ -219,9 +219,6 @@ function Hero() {
             <div className="absolute inset-0 grid place-items-center">
               <div className="text-center">
                 <img src={imgAtom.url} alt="Atom Ball — hero" className="mx-auto h-44 w-44 object-contain" />
-                <p className="mt-3 font-display text-sm font-semibold text-muted-foreground">
-                  []
-                </p>
               </div>
             </div>
             {/* floating chips */}
