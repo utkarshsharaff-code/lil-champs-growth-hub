@@ -164,6 +164,7 @@ export function LandingPage() {
        <FAQ />
       <Testimonials />
       <Footer />
+       <SiteExtras />
     </div>
   );
 }
@@ -843,8 +844,41 @@ function Testimonials() {
   );
 }
 
-/* ---------- Footer ---------- */
+/* ---------- Floating buttons (WhatsApp + back to top) ---------- */
 
+function SiteExtras() {
+  const [showTop, setShowTop] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > 400);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <>
+      
+        href="https://wa.me/910000000000"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
+        className="fixed bottom-5 right-5 z-40 grid h-12 w-12 place-items-center rounded-full bg-[#25D366] text-white shadow-soft transition hover:brightness-105"
+      >
+        <MessageCircle size={22} />
+      </a>
+      {showTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Back to top"
+          className="fixed bottom-20 right-5 z-40 grid h-11 w-11 place-items-center rounded-full bg-card text-foreground shadow-soft ring-1 ring-border transition hover:brightness-105"
+        >
+          <ArrowRight size={18} className="-rotate-90" />
+        </button>
+      )}
+    </>
+  );
+}
+
+/* ---------- Footer ---------- */
 export function Footer() {
   return (
     <footer id="contact" className="relative">
@@ -954,6 +988,11 @@ export function Footer() {
         <div className="border-t border-background/10">
           <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 text-xs text-background/60 sm:flex-row md:px-8">
             <p>© {new Date().getFullYear()} Lil Champs® — a registered trademark, based in Gurugram, Haryana, India. All rights reserved.</p>
+           <div className="bg-primary text-primary-foreground">
+        <p className="mx-auto max-w-7xl px-5 py-1.5 text-center text-xs font-semibold md:text-sm">
+          Free shipping on all orders over ₹499 — loved by parents across India
+        </p>
+      </div>
             <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
               <a href="/privacy-policy" className="transition hover:text-background">Privacy Policy</a>
               <a href="/terms" className="transition hover:text-background">Terms of Service</a>
