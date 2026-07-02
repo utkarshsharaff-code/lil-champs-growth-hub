@@ -698,6 +698,30 @@ const faqs = [
     q: "What payment methods do you accept?",
     a: "All major credit and debit cards, UPI, net banking and popular wallets — plus Cash on Delivery on eligible pin codes.",
   },
+  {
+    q: "When should I start giving toys to my newborn?",
+    a: "You can gently introduce simple toys within the first few weeks. Soft rattles, high-contrast black-and-white cards and crinkly cloth books make wonderful first toys — you'll find newborn-safe options in our 0–3 months range to engage your baby's senses from day one.",
+  },
+  {
+    q: "Can a one-week-old baby really play?",
+    a: "At this stage, play is less about toys and more about sensory-rich moments. High-contrast cards, crinkly cloth books and soft-textured rattles from our 0–3 months toys gently nurture your baby's early visual and motor milestones.",
+  },
+  {
+    q: "What kind of toys are safe for newborns?",
+    a: "Stick to soft plush rattles, food-grade silicone teethers and small fabric toys with no hard plastic or detachable parts. Every Lil Champs toy for this age is designed with newborn safety and comfort in mind — free from harsh materials or choking hazards.",
+  },
+  {
+    q: "How do these toys support my baby's growth?",
+    a: "Every gentle grasp, squeeze or gaze toward a high-contrast shape helps your baby build muscle strength and sensory awareness. Our milestone-based toys are designed to support motor, visual and emotional development — without overwhelming little senses.",
+  },
+  {
+    q: "Do newborns need tummy-time toys?",
+    a: "Yes — even 1–2 minutes a few times a day builds the strength for future milestones. Pair a soft play mat with a baby-safe mirror or high-contrast cards to make tummy time more engaging, and easier, for both of you.",
+  },
+  {
+    q: "My baby is only a month old — what toys make sense?",
+    a: "At one month, babies start responding to light, sound and touch. Squeeze rattles, soft musical plushies and textured board books from our 0–3 months range gently spark their growing curiosity in an age-appropriate way.",
+  },
 ];
 
 function FAQ() {
