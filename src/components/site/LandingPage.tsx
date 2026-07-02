@@ -856,10 +856,6 @@ function SiteExtras() {
   }, []);
   return (
    <>
-      
-        href="https://wa.me/910000000000"
-        target="_blank"
-        rel="noopener noreferrer"
          <a href="https://wa.me/910000000000"
         className="fixed bottom-5 right-5 z-40 grid h-12 w-12 place-items-center rounded-full bg-[#25D366] text-white shadow-soft transition hover:brightness-105"
       >
