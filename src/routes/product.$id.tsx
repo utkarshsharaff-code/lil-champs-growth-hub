@@ -6,6 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useCart } from "@/context/CartContext";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/LandingPage";
+import { ProductReviews } from "@/components/site/ProductReviews";
 
 export const Route = createFileRoute("/product/$id")({
   component: ProductDetailPage,
@@ -194,6 +195,7 @@ function ProductDetailPage() {
               )}
             </div>
           ) : null}
+          {product && <ProductReviews productId={id} />}
         </div>
       </main>
       <Footer />
