@@ -860,7 +860,7 @@ function SiteExtras() {
         href="https://wa.me/910000000000"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
+         <a href="https://wa.me/910000000000"
         className="fixed bottom-5 right-5 z-40 grid h-12 w-12 place-items-center rounded-full bg-[#25D366] text-white shadow-soft transition hover:brightness-105"
       >
         <MessageCircle size={22} />
@@ -984,6 +984,9 @@ export function Footer() {
             </form>
           </div>
         </div>
+          <div className="border-t border-background/10">
+          <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 text-xs text-background/60 sm:flex-row md:px-8">
+            <p>© {new Date().getFullYear()} Lil Champs® — a registered trademark, based in Gurugram, Haryana, India. All rights reserved.</p>  
             <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
               <a href="/privacy-policy" className="transition hover:text-background">Privacy Policy</a>
               <a href="/terms" className="transition hover:text-background">Terms of Service</a>
