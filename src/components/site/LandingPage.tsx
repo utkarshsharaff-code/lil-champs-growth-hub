@@ -161,6 +161,7 @@ export function LandingPage() {
       <Founder />
        <ExploreToys />
       <ForParents />
+       <FAQ />
       <Testimonials />
       <Footer />
     </div>
@@ -654,6 +655,101 @@ function ForParents() {
         </div>
       </div>
       <WaveDivider flip color="color-mix(in oklab, var(--color-highlight) 35%, var(--color-background))" />
+    </section>
+  );
+}
+
+/* ---------- FAQ ---------- */
+
+const faqs = [
+  {
+    q: "How long does delivery take?",
+    a: "Orders are dispatched within 24–48 hours and typically arrive in 3–6 business days across India. You'll get a tracking link by email and WhatsApp as soon as your order ships.",
+  },
+  {
+    q: "Is shipping free?",
+    a: "Yes — shipping is free on all orders above ₹499. Below that, a flat ₹49 is added at checkout.",
+  },
+  {
+    q: "Are the toys safe for babies?",
+    a: "Every toy is made from non-toxic, BPA- and phthalate-free materials and tested against BIS (IS 9873), EN71 and ASTM F963 safety standards. Nothing reaches your baby without passing our safety checks.",
+  },
+  {
+    q: "What materials do you use?",
+    a: "Food-grade silicone, natural wood, and OEKO-TEX certified fabrics — no harsh dyes, and no small detachable parts on toys for 0–6 month olds.",
+  },
+  {
+    q: "How do I choose the right toy for my baby?",
+    a: "Use the Shop by Age tab or the Age Finder — pick your baby's stage (0–3, 3–6, 6–9, 9–12 or 12–15 months) and we'll show the toys designed for that exact developmental window.",
+  },
+  {
+    q: "My baby is between two stages — which should I pick?",
+    a: "Go with the older band. Our toys are designed to gently stretch what your baby can do next, so a slightly advanced toy grows with them.",
+  },
+  {
+    q: "How do I clean the toys?",
+    a: "Wipe wooden toys with a soft, slightly damp cloth — never submerge them. Silicone teethers can be sterilised in warm water. Always let toys dry fully before storing.",
+  },
+  {
+    q: "What is your return policy?",
+    a: "Unused toys in their original packaging can be returned within 7 days of delivery for a full refund or exchange. For hygiene reasons, teethers can't be returned once opened.",
+  },
+  {
+    q: "What payment methods do you accept?",
+    a: "All major credit and debit cards, UPI, net banking and popular wallets — plus Cash on Delivery on eligible pin codes.",
+  },
+];
+
+function FAQ() {
+  const [open, setOpen] = useState<number>(-1);
+  return (
+    <section id="faq" className="py-20 md:py-28">
+      <div className="mx-auto max-w-4xl px-5 md:px-8">
+        <Reveal>
+          <div className="text-center">
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary">FAQ</p>
+            <h2 className="mt-3 font-display text-3xl font-bold md:text-4xl">
+              Frequently asked questions
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              Everything you need to know about our toys, shipping, and safety.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="mt-10 space-y-3">
+          {faqs.map((f, i) => {
+            const isOpen = open === i;
+            return (
+              <Reveal key={f.q} delay={i * 60}>
+                <div className="overflow-hidden rounded-3xl bg-card shadow-soft">
+                  <button
+                    onClick={() => setOpen(isOpen ? -1 : i)}
+                    className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                  >
+                    <span className="font-display text-base font-bold md:text-lg">{f.q}</span>
+                    <ChevronDown
+                      size={20}
+                      className={`shrink-0 text-primary transition-transform ${isOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  <div
+                    className={`grid transition-all duration-300 ${
+                      isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="px-6 pb-6 text-sm leading-relaxed text-muted-foreground md:text-base">
+                        {f.a}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 }
