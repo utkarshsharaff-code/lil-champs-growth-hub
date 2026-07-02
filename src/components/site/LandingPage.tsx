@@ -429,45 +429,6 @@ function ExploreToys() {
   );
 }
 
-/* ---------- Explore Toys (Products / Age / Category switcher) ---------- */
-
-function ExploreToys() {
-  const [view, setView] = useState<"products" | "age" | "category">("products");
-  const tabs = [
-    { id: "products", label: "Products" },
-    { id: "age", label: "Shop by Age" },
-    { id: "category", label: "Shop by Category" },
-  ] as const;
-
-  return (
-    <section id="products" className="scroll-mt-24">
-      <div className="mx-auto max-w-7xl px-5 pt-20 md:px-8 md:pt-28">
-        <Reveal>
-          <div className="mx-auto flex w-fit flex-wrap justify-center gap-2 rounded-full bg-card p-2 shadow-soft">
-            {tabs.map((t) => (
-              <button
-                key={t.id}
-                onClick={() => setView(t.id)}
-                className={`rounded-full px-5 py-2.5 text-sm font-semibold transition ${
-                  view === t.id
-                    ? "bg-primary text-primary-foreground shadow-soft"
-                    : "text-foreground/70 hover:bg-accent"
-                }`}
-              >
-                {t.label}
-              </button>
-            ))}
-          </div>
-        </Reveal>
-      </div>
-
-      {view === "products" && <Products />}
-      {view === "age" && <AgeFinder />}
-      {view === "category" && <ShopByCategory />}
-    </section>
-  );
-}
-
 /* ---------- Products ---------- */
 
 type DbProduct = {
